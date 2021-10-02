@@ -117,7 +117,7 @@ def help(message):
   pass        
 
 
-# catch all messages  
+# catch all messages and save in database
 @bot.message_handler(func=lambda m: True)
 def echo_all(message):
   try:
@@ -128,7 +128,10 @@ def echo_all(message):
         "date": message.date,
         "type": message.chat.type,
         "text": message.text,
-        "user": message.from_user.id
+        "user": message.from_user.id,
+        "username": message.from_user.username,
+        "first_name": message.from_user.first_name,
+        "last_name": message.from_user.last_name
     }
     messageContent.save_message(messageObj)
   except Exception as e:
@@ -139,7 +142,7 @@ def echo_all(message):
 def sendMessageViaChatId(chat_id, txt):
   bot.send_message(chat_id, txt)
 
-sendMessageViaChatId(1664758714, "Hi") # 1664758714 is the chat ID (For private messages, group ID = Chat ID)
+sendMessageViaChatId(-1001545752396, "Hi") # 1664758714 is the chat ID (For private messages, group ID = Chat ID)
 
 # start polling to continuously listen for messages
 bot.polling()
