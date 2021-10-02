@@ -97,8 +97,6 @@ messageContent = Message(dbConnection)
 # initialize the bot
 bot = telebot.TeleBot(BOT_TELEGRAM_API_TOKEN, parse_mode="markdown")
 
-!pip install jsonpickle
-
 # Function to catch incomming command /about
 @bot.message_handler(commands=['about'])
 def about(message):
@@ -136,6 +134,12 @@ def echo_all(message):
   except Exception as e:
     logger.error(e)
   pass
+
+# this function will send a message to a specific chat ID
+def sendMessageViaChatId(chat_id, txt):
+  bot.send_message(chat_id, txt)
+
+sendMessageViaChatId(430400644, "Hi")
 
 # start polling to continuously listen for messages
 bot.polling()
