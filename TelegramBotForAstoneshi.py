@@ -139,7 +139,7 @@ def echo_all(message):
 def sendMessageViaChatId(chat_id, txt):
   bot.send_message(chat_id, txt)
 
-sendMessageViaChatId(430400644, "Hi")
+sendMessageViaChatId(1664758714, "Hi") # 1664758714 is the chat ID (For private messages, group ID = Chat ID)
 
 # start polling to continuously listen for messages
 bot.polling()
