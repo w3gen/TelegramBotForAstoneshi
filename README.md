@@ -53,6 +53,21 @@ To test the bot, use the .ipynb file on a Google Colab environment. Execute each
 At the end you can view collected data using python Pandas library.
 Using python pandas library you can manipulate almost everything on your data.
 
+#### Polling
+To receive messages, the bot must do polling (continuous triggering the telegram API). 
+```python
+# start polling to continuously listen for messages
+bot.polling()
+# gracefully stop the bot after ctrl + c 
+bot.stop_polling()
+```
+#### Sending messages into a specific Chat ID
+Chat ID is same as the user ID if it's a private chat between the user and the bot. 
+If the bot is inside a group, chat ID is different.
+```python
+bot.send_message(chat_id, txt)
+#Ex: bot.send_message(-1001545752396, "Hi") -> 1664758714 is the chat ID (For private messages, group ID = Chat ID)
+```
 ## Owner
 This repository is owned by @astoneshi 
 
